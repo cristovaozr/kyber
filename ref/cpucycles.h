@@ -3,6 +3,12 @@
 
 #include <stdint.h>
 
+#if 1
+
+uint64_t cpucycles(void);
+
+#else
+
 #ifdef USE_RDPMC  /* Needs echo 2 > /sys/devices/cpu/rdpmc */
 
 static inline uint64_t cpucycles(void) {
@@ -25,6 +31,8 @@ static inline uint64_t cpucycles(void) {
 
   return result;
 }
+
+#endif
 
 #endif
 
